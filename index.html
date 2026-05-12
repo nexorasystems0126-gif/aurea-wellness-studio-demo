@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Aurea Wellness — Restorative Wellness Studio</title>
+  <meta name="description" content="Aurea Wellness is a calm restorative wellness studio concept created as a Nexora Systems service-booking demo." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Marcellus&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #F4F7FB;
+      --bg-soft: #E8EEF6;
+      --panel: rgba(255,255,255,.68);
+      --panel-strong: rgba(255,255,255,.86);
+      --text: #1E2833;
+      --muted: rgba(30, 40, 51, .68);
+      --line: rgba(30, 40, 51, .11);
+      --blue: #7FAFD4;
+      --teal: #8EB8C8;
+      --steel: #5D7FA3;
+      --navy: #425A70;
+      --shadow: 0 28px 80px rgba(50, 72, 98, .14);
+      --max: 1180px;
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 14% 10%, rgba(127,175,212,.18), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(142,184,200,.20), transparent 28%),
+        radial-gradient(circle at 54% 84%, rgba(202,214,230,.50), transparent 40%),
+        linear-gradient(180deg, #F4F7FB, #E8EEF6);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--steel);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .74rem;
+      font-weight: 850;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--teal);
+      box-shadow: 0 0 0 7px rgba(142,184,200,.14);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Marcellus, Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: clamp(4rem, 9vw, 8.8rem);
+      max-width: 1050px;
+    }
+
+    h2 {
+      font-size: clamp(2.75rem, 5.8vw, 6rem);
+      max-width: 930px;
+    }
+
+    h3 {
+      font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: clamp(1.06rem, 1.7vw, 1.32rem);
+      color: rgba(30,40,51,.76);
+      max-width: 760px;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: .92rem;
+      font-weight: 800;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: #F4F7FB;
+      box-shadow: 0 18px 55px rgba(30,40,51,.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--steel);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,.48);
+      color: var(--text);
+      backdrop-filter: blur(14px);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(93,127,163,.42);
+      color: var(--steel);
+    }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 80;
+      background: rgba(244,247,251,.78);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .wordmark {
+      font-family: Marcellus, Georgia, serif;
+      font-size: 1.55rem;
+      letter-spacing: -.04em;
+      color: var(--text);
+    }
+
+    .wordmark span {
+      display: block;
+      font-family: Inter, sans-serif;
+      font-size: .62rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--teal);
+      margin-top: -4px;
+      font-weight: 850;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: rgba(30,40,51,.62);
+      font-size: .9rem;
+      font-weight: 750;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.4);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 86px;
+      left: 20px;
+      right: 20px;
+      z-index: 90;
+      border: 1px solid var(--line);
+      background: rgba(244,247,251,.98);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+      gap: 16px;
+    }
+
+    .section {
+      padding: 112px 0;
+      position: relative;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 76px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(90deg, rgba(244,247,251,.97), rgba(244,247,251,.82), rgba(244,247,251,.38)),
+        linear-gradient(180deg, rgba(244,247,251,.08), var(--bg) 94%),
+        url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=2200&q=80") center/cover;
+      transform: scale(1.03);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 680px;
+      height: 680px;
+      right: -260px;
+      bottom: -320px;
+      border-radius: 50%;
+      background: rgba(127,175,212,.12);
+      z-index: -2;
+    }
+
+    .hero-content {
+      padding: 100px 0 76px;
+      max-width: 1030px;
+    }
+
+    .hero .lead {
+      margin-top: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-panel {
+      margin-top: 76px;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.5);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo-grid {
+      min-height: 340px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 10px;
+      padding: 12px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-photo-main,
+    .hero-photo-small {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #dbe5ee;
+    }
+
+    .hero-photo-main::before,
+    .hero-photo-small::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .7s ease;
+    }
+
+    .hero-photo-main::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.28)),
+        url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1300&q=80");
+    }
+
+    .hero-photo-small.one::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.24)),
+        url("https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .hero-photo-small.two::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.24)),
+        url("https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .hero-panel:hover .hero-photo-main::before,
+    .hero-panel:hover .hero-photo-small::before {
+      transform: scale(1.06);
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .hero-panel-copy {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-panel-copy div {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-panel-copy div:last-child {
+      border-bottom: none;
+    }
+
+    .hero-panel span {
+      display: block;
+      color: var(--teal);
+      font-size: .74rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .hero-panel strong {
+      display: block;
+      color: var(--text);
+      font-size: .98rem;
+      line-height: 1.4;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 52px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+
+    .section-head p {
+      max-width: 610px;
+      justify-self: end;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: rgba(255,255,255,.56);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(93,127,163,.42);
+    }
+
+    .service-image {
+      min-height: 230px;
+      position: relative;
+      overflow: hidden;
+      background: #dbe5ee;
+    }
+
+    .service-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .7s ease;
+    }
+
+    .service-card:nth-child(1) .service-image::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.34)),
+        url("https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .service-card:nth-child(2) .service-image::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.34)),
+        url("https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .service-card:nth-child(3) .service-image::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.34)),
+        url("https://images.unsplash.com/photo-1524863479829-916d8e77f114?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .service-card:nth-child(4) .service-image::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.34)),
+        url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .service-card:hover .service-image::before {
+      transform: scale(1.07);
+    }
+
+    .service-badge {
+      position: absolute;
+      z-index: 3;
+      left: 18px;
+      top: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(244,247,251,.78);
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .service-body {
+      padding: 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-body p {
+      margin-top: 12px;
+    }
+
+    .service-meta {
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--steel);
+      font-weight: 850;
+      font-size: .9rem;
+    }
+
+    .gallery-strip {
+      padding: 0 0 112px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr 1fr;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      min-height: 420px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: #dbe5ee;
+    }
+
+    .gallery-item.small {
+      min-height: 300px;
+    }
+
+    .gallery-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .gallery-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .8s ease;
+    }
+
+    .gallery-item:hover::before {
+      transform: scale(1.06);
+    }
+
+    .gallery-item.one::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.24)),
+        url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=80");
+    }
+
+    .gallery-item.two::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.24)),
+        url("https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1100&q=80");
+    }
+
+    .gallery-item.three::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.24)),
+        url("https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=1100&q=80");
+    }
+
+    .gallery-item.four::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.24)),
+        url("https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1400&q=80");
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 3;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(244,247,251,.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.4);
+    }
+
+    .gallery-caption strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .gallery-caption span {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 650;
+    }
+
+    .ritual {
+      background: var(--text);
+      color: #F4F7FB;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .ritual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(127,175,212,.18), transparent 34%),
+        radial-gradient(circle at 82% 72%, rgba(142,184,200,.18), transparent 32%);
+    }
+
+    .dark p,
+    .dark .lead {
+      color: rgba(244,247,251,.74);
+    }
+
+    .ritual-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .ritual-copy p {
+      margin-top: 22px;
+    }
+
+    .ritual-visual {
+      min-height: 590px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(244,247,251,.12);
+      box-shadow: 0 30px 90px rgba(0,0,0,.34);
+      background:
+        linear-gradient(180deg, rgba(30,40,51,.08), rgba(30,40,51,.58)),
+        url("https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .ritual-visual-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      border-radius: 24px;
+      background: rgba(244,247,251,.14);
+      border: 1px solid rgba(244,247,251,.16);
+      backdrop-filter: blur(14px);
+      padding: 22px;
+      box-shadow: 0 18px 38px rgba(0,0,0,.18);
+    }
+
+    .ritual-visual-card strong {
+      color: #F4F7FB;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .ritual-visual-card span {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      margin-top: 9px;
+      background: rgba(244,247,251,.26);
+      overflow: hidden;
+    }
+
+    .ritual-visual-card span::before {
+      content: "";
+      display: block;
+      width: var(--w, 70%);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+      animation: softPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes softPulse {
+      0%, 100% { opacity: .65; transform: scaleX(.75); transform-origin: left; }
+      50% { opacity: 1; transform: scaleX(1); transform-origin: left; }
+    }
+
+    .ritual-list {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      list-style: none;
+    }
+
+    .ritual-list li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(244,247,251,.12);
+      background: rgba(244,247,251,.06);
+      color: rgba(244,247,251,.84);
+      font-weight: 750;
+    }
+
+    .membership-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .membership-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.56);
+      min-height: 410px;
+      transition: transform .25s ease, border-color .25s ease;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .membership-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(142,184,200,.44);
+    }
+
+    .membership-image {
+      min-height: 190px;
+      position: relative;
+      overflow: hidden;
+      background: #dbe5ee;
+    }
+
+    .membership-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .7s ease;
+    }
+
+    .membership-card:hover .membership-image::before {
+      transform: scale(1.06);
+    }
+
+    .membership-card:nth-child(1) .membership-image::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.30)),
+        url("https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1300&q=80");
+    }
+
+    .membership-card:nth-child(2) .membership-image::before {
+      background-image:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.30)),
+        url("https://images.unsplash.com/photo-1598901865264-4f6a91d82a7b?auto=format&fit=crop&w=1300&q=80");
+    }
+
+    .membership-body {
+      padding: 30px;
+    }
+
+    .membership-card p {
+      margin-top: 14px;
+    }
+
+    .membership-list {
+      margin-top: 24px;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .membership-list li {
+      display: flex;
+      gap: 10px;
+      color: rgba(30,40,51,.72);
+      font-weight: 700;
+    }
+
+    .membership-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--teal);
+      margin-top: 9px;
+      flex: 0 0 auto;
+    }
+
+    .booking {
+      background:
+        linear-gradient(180deg, rgba(30,40,51,.95), rgba(30,40,51,.99)),
+        url("https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=2200&q=80") center/cover;
+      color: #F4F7FB;
+    }
+
+    .booking-box {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 42px;
+      align-items: start;
+      border-radius: 42px;
+      border: 1px solid rgba(244,247,251,.12);
+      background: rgba(244,247,251,.06);
+      backdrop-filter: blur(16px);
+      padding: clamp(28px, 5vw, 64px);
+      box-shadow: 0 30px 90px rgba(0,0,0,.34);
+    }
+
+    .booking-copy p {
+      margin-top: 22px;
+    }
+
+    .booking-image {
+      margin-top: 32px;
+      min-height: 270px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(244,247,251,.12);
+      background:
+        linear-gradient(180deg, rgba(30,40,51,.08), rgba(30,40,51,.34)),
+        url("https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: rgba(244,247,251,.76);
+      font-size: .82rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(244,247,251,.14);
+      background: rgba(30,40,51,.48);
+      color: #F4F7FB;
+      padding: 0 15px;
+      outline: none;
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      padding-top: 14px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(127,175,212,.78);
+      background: rgba(30,40,51,.68);
+    }
+
+    option {
+      background: var(--text);
+      color: #F4F7FB;
+    }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .location-card,
+    .hours-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.56);
+      padding: 34px;
+      min-height: 420px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .location-photo {
+      margin-top: 28px;
+      min-height: 210px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.22)),
+        url("https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .hours-photo {
+      margin-top: 28px;
+      min-height: 210px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(30,40,51,.02), rgba(30,40,51,.22)),
+        url("https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .hours-list {
+      margin-top: 26px;
+      display: grid;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hours-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .hours-list strong {
+      color: var(--text);
+    }
+
+    .final-cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(127,175,212,.18), transparent 36%),
+        var(--text);
+      color: #F4F7FB;
+    }
+
+    .final-cta h2,
+    .final-cta p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta p {
+      margin-top: 22px;
+    }
+
+    .final-actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      background: #171D24;
+      color: #F4F7FB;
+      padding: 54px 0 34px;
+      border-top: 1px solid rgba(244,247,251,.08);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .footer-grid p {
+      color: rgba(244,247,251,.58);
+      margin-top: 12px;
+      max-width: 420px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      color: rgba(244,247,251,.62);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .footer-links strong {
+      color: #F4F7FB;
+      margin-bottom: 4px;
+    }
+
+    .footer-links a:hover {
+      color: var(--blue);
+    }
+
+    .credit {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(244,247,251,.08);
+      color: rgba(244,247,251,.5);
+      font-size: .86rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head,
+      .ritual-layout,
+      .booking-box,
+      .location-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head p {
+        justify-self: start;
+      }
+
+      .ritual-visual {
+        min-height: 440px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links,
+      .nav > .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 82px 0 58px;
+      }
+
+      .hero-panel,
+      .membership-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-grid {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      .hero-actions,
+      .final-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ritual-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item,
+      .gallery-item.small {
+        min-height: 300px;
+      }
+
+      .location-card,
+      .hours-card {
+        min-height: 320px;
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="wordmark">Aurea Wellness<span>Restorative Studio</span></a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#gallery">Studio</a>
+        <a href="#ritual">Ritual</a>
+        <a href="#membership">Membership</a>
+        <a href="#location">Location</a>
+      </nav>
+
+      <a href="#booking" class="btn btn-primary">Book a Session</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#services">Services</a>
+      <a href="#gallery">Studio</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#membership">Membership</a>
+      <a href="#location">Location</a>
+      <a href="#booking" class="btn btn-primary">Book a Session</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="container hero-content reveal">
+        <div class="eyebrow">Calm Wellness Studio</div>
+
+        <h1 style="margin-top: 24px;">A softer return to balance, breath, and body.</h1>
+
+        <p class="lead">
+          Aurea Wellness is a restorative studio created for guided treatments, slow rituals, and a booking experience that feels calm from the first click.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Book a Session</a>
+          <a href="#services" class="btn btn-secondary">Explore Services</a>
+        </div>
+
+        <div class="hero-panel" aria-label="Studio highlights">
+          <div class="hero-photo-grid">
+            <div class="hero-photo-main"></div>
+            <div class="hero-side">
+              <div class="hero-photo-small one"></div>
+              <div class="hero-photo-small two"></div>
+            </div>
+          </div>
+
+          <div class="hero-panel-copy">
+            <div><span>Focus</span><strong>Massage, breathwork, facials, and restorative treatments</strong></div>
+            <div><span>Experience</span><strong>Airy interiors, watery tones, calm booking, guided care</strong></div>
+            <div><span>Booking</span><strong>Service selection, preferred date, client notes</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Services</div>
+            <h2 style="margin-top: 22px;">Treatments designed around restoration, not rush.</h2>
+          </div>
+
+          <p>
+            Aurea makes service discovery feel gentle, clear, and premium, helping clients understand the right treatment before they book.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-image"><span class="service-badge">Bodywork</span></div>
+            <div class="service-body">
+              <h3>Signature Bodywork</h3>
+              <p>A grounding massage treatment designed to release tension and restore calm.</p>
+              <div class="service-meta">75 mins · From £120</div>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-image"><span class="service-badge">Facial</span></div>
+            <div class="service-body">
+              <h3>Restorative Facial</h3>
+              <p>A slow facial ritual focused on hydration, glow, and skin recovery.</p>
+              <div class="service-meta">60 mins · From £95</div>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-image"><span class="service-badge">Breath</span></div>
+            <div class="service-body">
+              <h3>Guided Breathwork</h3>
+              <p>A calming session for nervous system regulation, breath awareness, and reset.</p>
+              <div class="service-meta">45 mins · From £70</div>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-image"><span class="service-badge">For Two</span></div>
+            <div class="service-body">
+              <h3>Couples Ritual</h3>
+              <p>A shared restorative experience designed for two with private studio time.</p>
+              <div class="service-meta">90 mins · From £220</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-strip" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Studio Atmosphere</div>
+            <h2 style="margin-top: 22px;">A calm visual world before the appointment begins.</h2>
+          </div>
+
+          <p>
+            For wellness brands, imagery does more than decorate. It helps clients feel safe, relaxed, and ready to book.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item one reveal">
+            <div class="gallery-caption">
+              <strong>Soft treatment rooms</strong>
+              <span>Quiet spaces designed around calm care.</span>
+            </div>
+          </div>
+
+          <div class="gallery-stack">
+            <div class="gallery-item small two reveal">
+              <div class="gallery-caption">
+                <strong>Guided rituals</strong>
+                <span>Gentle steps from arrival to aftercare.</span>
+              </div>
+            </div>
+
+            <div class="gallery-item small three reveal">
+              <div class="gallery-caption">
+                <strong>Slow details</strong>
+                <span>Textures, oils, breath, and presence.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item four reveal">
+            <div class="gallery-caption">
+              <strong>Restorative pace</strong>
+              <span>Service discovery that feels premium, not rushed.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ritual dark" id="ritual">
+      <div class="container ritual-layout">
+        <div class="ritual-copy reveal">
+          <div class="eyebrow">The Ritual</div>
+
+          <h2 style="margin-top: 22px;">From arrival to aftercare, every step should feel considered.</h2>
+
+          <p class="lead">
+            The Aurea experience is designed to reduce friction and create trust: a clear service path, soft intake flow, guided session notes, and thoughtful follow-up.
+          </p>
+
+          <ul class="ritual-list">
+            <li>Calm service discovery</li>
+            <li>Simple appointment request</li>
+            <li>Client intake notes</li>
+            <li>Aftercare follow-up</li>
+          </ul>
+        </div>
+
+        <div class="ritual-visual reveal" aria-label="Aurea wellness studio visual">
+          <div class="ritual-visual-card">
+            <strong>Client Journey</strong>
+            <span style="--w: 82%"></span>
+            <span style="--w: 66%"></span>
+            <span style="--w: 74%"></span>
+            <span style="--w: 52%"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="membership">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Membership</div>
+            <h2 style="margin-top: 22px;">Care that continues beyond one session.</h2>
+          </div>
+
+          <p>
+            Recurring plans help wellness studios turn one-time visits into long-term client relationships without making the brand feel transactional.
+          </p>
+        </div>
+
+        <div class="membership-grid">
+          <article class="membership-card reveal">
+            <div class="membership-image"></div>
+            <div class="membership-body">
+              <h3>Monthly Reset</h3>
+              <p>For clients who want one restorative treatment every month with priority booking access.</p>
+
+              <ul class="membership-list">
+                <li>One monthly treatment</li>
+                <li>Priority appointment slots</li>
+                <li>Aftercare notes</li>
+                <li>Member-only seasonal rituals</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="membership-card reveal">
+            <div class="membership-image"></div>
+            <div class="membership-body">
+              <h3>Deep Care Plan</h3>
+              <p>For clients building a consistent wellness rhythm with bodywork, breathwork, and guided care.</p>
+
+              <ul class="membership-list">
+                <li>Two monthly sessions</li>
+                <li>Personalized service plan</li>
+                <li>Follow-up reminders</li>
+                <li>Preferred therapist matching</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking dark" id="booking">
+      <div class="container booking-box reveal">
+        <div class="booking-copy">
+          <div class="eyebrow">Booking Request</div>
+
+          <h2 style="margin-top: 22px;">Book your session.</h2>
+
+          <p>
+            Choose your preferred treatment, date, and notes. This form is a demo booking flow built to show how a wellness studio can capture appointment intent clearly.
+          </p>
+
+          <div class="booking-image"></div>
+        </div>
+
+        <form name="aurea-booking" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="aurea-booking" />
+
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" />
+          </div>
+
+          <div class="field">
+            <label for="service">Preferred service</label>
+            <select id="service" name="service">
+              <option>Signature Bodywork</option>
+              <option>Restorative Facial</option>
+              <option>Guided Breathwork</option>
+              <option>Couples Ritual</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="date">Preferred date</label>
+            <input id="date" name="date" type="date" />
+          </div>
+
+          <div class="field">
+            <label for="time">Preferred time</label>
+            <select id="time" name="time">
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="notes">Client notes</label>
+            <textarea id="notes" name="notes" placeholder="Tell us what you would like support with..."></textarea>
+          </div>
+
+          <div class="field full">
+            <button class="btn btn-primary" type="submit">Request Appointment</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Location</div>
+            <h2 style="margin-top: 22px;">A calm studio tucked away from the noise.</h2>
+          </div>
+
+          <p>
+            Aurea is imagined as a quiet urban wellness studio for clients who want a restorative pause without leaving the city.
+          </p>
+        </div>
+
+        <div class="location-layout">
+          <div class="location-card reveal">
+            <h3>Aurea Wellness</h3>
+            <p style="margin-top: 18px;">18 Willow House<br />Chelsea, London, United Kingdom</p>
+            <p style="margin-top: 22px;">Designed for calm treatments, guided rituals, and a quieter booking experience.</p>
+            <div class="location-photo"></div>
+          </div>
+
+          <div class="hours-card reveal">
+            <h3>Studio Hours</h3>
+
+            <div class="hours-list">
+              <div><span>Monday — Friday</span><strong>8:00 — 20:00</strong></div>
+              <div><span>Saturday</span><strong>9:00 — 18:00</strong></div>
+              <div><span>Sunday</span><strong>Private sessions</strong></div>
+            </div>
+
+            <div class="hours-photo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta dark">
+      <div class="container reveal">
+        <div class="eyebrow">Begin Again</div>
+
+        <h2 style="margin-top: 22px;">Begin with one quiet session.</h2>
+
+        <p class="lead">
+          A softer treatment, a calmer booking process, and a wellness experience designed around presence.
+        </p>
+
+        <div class="final-actions">
+          <a href="#booking" class="btn btn-primary">Book a Session</a>
+          <a href="#services" class="btn btn-secondary">Explore Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <a href="#top" class="wordmark" style="color: #F4F7FB;">Aurea Wellness<span>A Nexora Concept</span></a>
+        <p>A restorative wellness studio concept built to demonstrate calm service discovery and booking flow design.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <strong>Explore</strong>
+        <a href="#services">Services</a>
+        <a href="#gallery">Studio</a>
+        <a href="#ritual">Ritual</a>
+        <a href="#membership">Membership</a>
+        <a href="#location">Location</a>
+      </nav>
+
+      <div class="footer-links">
+        <strong>Project Credit</strong>
+        <a href="https://nexora-system-os.pages.dev" target="_blank" rel="noopener">Concept website by Nexora Systems</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="credit">© 2026 Aurea Wellness. Fictional wellness studio concept created for Nexora Systems portfolio development.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => mobileMenu.classList.remove("open"));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
